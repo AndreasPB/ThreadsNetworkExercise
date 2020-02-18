@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="69179e36-dc55-475e-abf2-1d720063ac26" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="TCPNetworkExercise">
+      <favorite_root url="file://$PROJECT_DIR$/ClientServer" module="ClientServer" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+        <favorite_root url="file://$PROJECT_DIR$/ClientServer/lib" module="ClientServer" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+          <favorite_root url="file://$PROJECT_DIR$/ClientServer/lib/commons-lang3-3.9.jar" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+        </favorite_root>
+        <favorite_root url="file://$PROJECT_DIR$/ClientServer/src" module="ClientServer" type="directory" klass="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode">
+          <favorite_root url="file://$PROJECT_DIR$/ClientServer/src/protocols.txt" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          <favorite_root url="file://$PROJECT_DIR$/ClientServer/src/ServerMain.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+          <favorite_root url="file://$PROJECT_DIR$/ClientServer/src/ServerWorker.java" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+        </favorite_root>
+        <favorite_root url="file://$PROJECT_DIR$/ClientServer/ClientServer.iml" type="psiFile" klass="com.intellij.ide.projectView.impl.nodes.PsiFileNode" />
+      </favorite_root>
+    </favorites_list>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/ThreadsNetworkExercise" />
+  </component>
+  <component name="ProjectId" id="1Xkd8MnMuwE2FHQ3sWbsJfhAVDD" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../IntArrayListExercise" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\andre\Documents\GitHub\TCPNetworkExercise\ClientServer\src" />
+      <recent name="C:\Users\andre\Documents\GitHub\TCPNetworkExercise\ClientServer" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ServerMain (1)">
+    <configuration name="ServerMain (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ServerMain" />
+      <module name="ClientServer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ServerMain" />
+      <module name="ThreadsNetworkExercise" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ServerMain (1)" />
+        <item itemvalue="Application.ServerMain" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="69179e36-dc55-475e-abf2-1d720063ac26" name="Default Changelist" comment="" />
+      <created>1581593865259</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1581593865259</updated>
+      <workItem from="1581593870168" duration="19429000" />
+      <workItem from="1581928130850" duration="1312000" />
+      <workItem from="1581932452031" duration="23000" />
+      <workItem from="1581932622525" duration="3828000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="233" y="4" key="#Project_Structure" timestamp="1581593876124">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="233" y="4" key="#Project_Structure/0.0.1280.689@0.0.1280.689" timestamp="1581593876124" />
+    <state x="125" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1581602884561">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="125" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1280.689@0.0.1280.689" timestamp="1581602884561" />
+    <state x="0" y="85" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581932349566">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="0" y="85" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.689@0.0.1280.689" timestamp="1581932349566" />
+    <state x="348" y="87" key="FileChooserDialogImpl" timestamp="1581928268350">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="348" y="87" key="FileChooserDialogImpl/0.0.1280.689@0.0.1280.689" timestamp="1581928268350" />
+    <state width="1237" height="138" key="GridCell.Tab.0.bottom" timestamp="1582015543884">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="138" key="GridCell.Tab.0.bottom/0.0.1280.689@0.0.1280.689" timestamp="1582015543884" />
+    <state width="1237" height="138" key="GridCell.Tab.0.center" timestamp="1582015543884">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="138" key="GridCell.Tab.0.center/0.0.1280.689@0.0.1280.689" timestamp="1582015543884" />
+    <state width="1237" height="138" key="GridCell.Tab.0.left" timestamp="1582015543883">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="138" key="GridCell.Tab.0.left/0.0.1280.689@0.0.1280.689" timestamp="1582015543883" />
+    <state width="1237" height="138" key="GridCell.Tab.0.right" timestamp="1582015543884">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state width="1237" height="138" key="GridCell.Tab.0.right/0.0.1280.689@0.0.1280.689" timestamp="1582015543884" />
+    <state x="121" y="0" key="SettingsEditor" timestamp="1581958409377">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="121" y="0" key="SettingsEditor/0.0.1280.689@0.0.1280.689" timestamp="1581958409377" />
+    <state x="337" y="170" key="com.intellij.ide.util.TipDialog" timestamp="1581932625323">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="337" y="170" key="com.intellij.ide.util.TipDialog/0.0.1280.689@0.0.1280.689" timestamp="1581932625323" />
+    <state x="50" y="104" key="extract.method.dialog" timestamp="1581670991611">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="50" y="104" key="extract.method.dialog/0.0.1280.689@0.0.1280.689" timestamp="1581670991611" />
+    <state x="59" y="0" key="new project wizard" timestamp="1581939654985">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="59" y="0" key="new project wizard/0.0.1280.689@0.0.1280.689" timestamp="1581939654985" />
+    <state x="-23" y="157" key="run.anything.popup" timestamp="1581672195098">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="-23" y="157" key="run.anything.popup/0.0.1280.689@0.0.1280.689" timestamp="1581672195098" />
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup" timestamp="1581928311043">
+      <screen x="0" y="0" width="1280" height="689" />
+    </state>
+    <state x="303" y="10" width="672" height="678" key="search.everywhere.popup/0.0.1280.689@0.0.1280.689" timestamp="1581928311043" />
+  </component>
+</project>
