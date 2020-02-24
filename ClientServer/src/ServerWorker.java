@@ -41,7 +41,11 @@ public class ServerWorker extends Thread {
                     break;
                 } else if ("login".equalsIgnoreCase(cmd)) {
                     handleLogin(outputStream, tokens);
-                } else {
+                } else if ("msg".equalsIgnoreCase(cmd)) {
+                    handleMessage(tokens);
+                }
+                
+                else {
                     String msg = "Ukendt: " + cmd + "\n\r";
                     outputStream.write(msg.getBytes());
                 }
@@ -52,7 +56,23 @@ public class ServerWorker extends Thread {
         clientSocket.close();
     }
 
+    // format: "msg" "login" msg
+    private void handleMessage(String[] tokens) throws IOException {
+        String sentTo = tokens[1];
+        String body = tokens[2];
+
+        List<ServerWorker> workerList = server.getWorkerList();
+        for (ServerWorker worker : workerList) {
+            if (sentTo.equalsIgnoreCase(worker.getLogin())) {
+                String outMsg = "msg " + login + " " + body + "\n\r";
+                worker.send(outMsg);
+            }
+
+        }
+    }
+
     private void handleLogoff() throws IOException {
+        server.removeWorker(this);
         List<ServerWorker> workerList = server.getWorkerList();
 
         // send other online user current user's status
@@ -75,7 +95,10 @@ public class ServerWorker extends Thread {
             String login = tokens[1];
             String password = tokens[2];
 
-            if ((login.equals("guest") && password.equals("guest")) || (login.equals("jim") && password.equals("fisk"))) {
+            if ((login.equals("guest") && password.equals("guest")) ||
+                    (login.equals("jens") && password.equals("1234")) ||
+                    ((login.equals("ole") && password.equals("1234")) )) {
+
                 String msg = "Godkendt login!\n\r";
                 outputStream.write(msg.getBytes());
                 this.login = login;
