@@ -12,9 +12,15 @@ User og Server
 3. User -> User
 
     - direct messages
-    - broadcast messages
+    - broadcast messages / gruppe besked
 
 Commands:
 
     login <user> <password>
     logoff
+
+    msg <bruger> besked
+    guest: "msg lars Hello World" <-- sender
+    lars: "msg guest Hello World" <-- modtager
+    send: join #topic
+    recv: msg #topic tekst...
