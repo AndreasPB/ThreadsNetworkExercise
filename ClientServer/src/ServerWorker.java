@@ -1,8 +1,6 @@
 import org.apache.commons.lang3.StringUtils;
 import java.io.*;
-import java.net.InetAddress;
 import java.net.Socket;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -33,7 +31,7 @@ public class ServerWorker extends Thread {
         InputStream inputStream = clientSocket.getInputStream();
         this.outputStream = clientSocket.getOutputStream();
 
-        outputStream.write(("\n\rVelkommen til chatten\n\rCommands: login, msg, join, leave, quit\n\n\r").getBytes());
+        outputStream.write(("\n\rVelkommen til chatten\n\rCommands: login, msg, list, join, leave, quit\n\n\r").getBytes());
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String line;
@@ -53,6 +51,8 @@ public class ServerWorker extends Thread {
                     handleJoin(tokens);
                 } else if ("leave".equalsIgnoreCase(cmd)) {
                     handleLeave(tokens);
+                } else if ("list".equalsIgnoreCase(cmd)) {
+                    handleList(login);
                 } else {
                     String msg = "Ukendt: " + cmd + "\n\r";
                     outputStream.write(msg.getBytes());
@@ -134,26 +134,23 @@ public class ServerWorker extends Thread {
                     (login.equals("jens") && password.equals("1234")) ||
                     ((login.equals("ole") && password.equals("1234")) )) {
 
+                if (login.equals("guest")) {
+                    this.login = handleGuests(login);
+                } else {
+                    this.login = login;
+                }
+
                 String msg = "Godkendt login!\n\r";
                 outputStream.write(msg.getBytes());
-                this.login = login;
                 System.out.println("User logged in successfully " + login);
 
                 List<ServerWorker> workerList = server.getWorkerList();
 
                 // send current user all other online logins
-                send("Brugere online: \n\r");
-                for (ServerWorker worker : workerList) {
-                    if (worker.getLogin() != null) {
-                        if (!login.equals(worker.getLogin())) {
-                            String msg2 = worker.getLogin() + "\n\r";
-                            send(msg2);
-                        }
-                    }
-                }
+                handleList(login);
 
                 // send other online user current user's status
-                String onlineMsg = login + "\n\r";
+                String onlineMsg = login + " er online!\n\r";
                 for (ServerWorker worker : workerList) {
                     if (!login.equals(worker.getLogin())) {
                         worker.send(onlineMsg);
@@ -165,6 +162,41 @@ public class ServerWorker extends Thread {
             }
         }
     }
+
+    private String handleGuests(String login) {
+        List<ServerWorker> workerList = server.getWorkerList();
+
+        System.out.println(workerList);
+
+        int count = 0;
+        boolean guestFound = false;
+        for (ServerWorker worker : workerList) {
+            if (worker.getLogin().equals("guest")) {
+                count++;
+                guestFound = true;
+            }
+        }
+        if (guestFound) {
+            String newLogin = login + count;
+            return newLogin;
+        } else {
+            return login;
+        }
+    }
+
+    private void handleList(String login) throws IOException {
+        List<ServerWorker> workerList = server.getWorkerList();
+        send("Brugere online: \n\r");
+        for (ServerWorker worker : workerList) {
+            if (worker.getLogin() != null) {
+                if (!login.equals(worker.getLogin())) {
+                    String msg2 = worker.getLogin() + "\n\r";
+                    send(msg2);
+                }
+            }
+        }
+    }
+
     private void send(String msg) throws IOException {
         if (login != null) {
             outputStream.write(msg.getBytes());
