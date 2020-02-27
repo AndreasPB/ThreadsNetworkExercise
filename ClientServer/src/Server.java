@@ -3,18 +3,19 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class Server extends Thread {
     private int serverPort;
 
-    private ArrayList<ServerWorker> workerList = new ArrayList<>();
+    private Vector<ServerWorker> workerList = new Vector<>();
 
 
     public Server(int serverPort) {
         this.serverPort = serverPort;
     }
 
-    public List<ServerWorker> getWorkerList() {
+    public Vector<ServerWorker> getWorkerList() {
         return workerList;
     }
 

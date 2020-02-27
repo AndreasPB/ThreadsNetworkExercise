@@ -20,7 +20,7 @@ Commands:
     logoff
 
     msg <bruger> besked
-    guest: "msg lars Hello World" <-- sender
-    lars: "msg guest Hello World" <-- modtager
+    guest: "msg/data lars Hello World" <-- sender
+    lars: "msg/data guest Hello World" <-- modtager
     send: join #topic
     recv: msg #topic tekst...

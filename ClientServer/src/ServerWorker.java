@@ -3,7 +3,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Timer;
+import java.util.Vector;
 
 public class ServerWorker extends Thread {
 
@@ -27,6 +27,11 @@ public class ServerWorker extends Thread {
         }
     }
 
+    /**
+     * Tager imod inputs fra CMD og udnytter protokoller
+     * @throws IOException
+     * @throws InterruptedException
+     */
 
     private void handleClientSocket() throws IOException, InterruptedException {
         InputStream inputStream = clientSocket.getInputStream();
@@ -46,7 +51,7 @@ public class ServerWorker extends Thread {
                     break;
                 } else if ("login".equalsIgnoreCase(cmd)) {
                     handleLogin(outputStream, tokens);
-                } else if ("msg".equalsIgnoreCase(cmd)) {
+                } else if ("data".equalsIgnoreCase(cmd) || ("msg".equalsIgnoreCase(cmd))) {
                     String[] tokensMsg = StringUtils.split(line, null, 3);
                     handleMessage(tokensMsg);
                 } else if ("join".equalsIgnoreCase(cmd)) {
@@ -59,8 +64,6 @@ public class ServerWorker extends Thread {
                     String msg = "Ukendt: " + cmd + "\n\r";
                     outputStream.write(msg.getBytes());
                 }
-                //String msg = "You typed: " + line + "\n";
-                //outputStream.write(msg.getBytes());
             }
         }
         clientSocket.close();
@@ -84,9 +87,9 @@ public class ServerWorker extends Thread {
         }
     }
 
-    // format: "msg" "login" tekst...
-    // format: "msg" "#topic" tekst...
-    private void handleMessage(String[] tokens) throws IOException {
+    // format: "msg/data" "login" tekst...
+    // format: "msg/data" "#topic" tekst...
+    private void handleMessage(String[] tokens) throws IOException, ArrayIndexOutOfBoundsException {
         String sendTo = tokens[1];
         String body = tokens[2];
 
@@ -96,12 +99,12 @@ public class ServerWorker extends Thread {
         for (ServerWorker worker : workerList) {
             if (isTopic) {
                 if (worker.isMemberOfTopic(sendTo)) {
-                    String outMsg = "msg " + sendTo + ":" + login + " " + body + "\n\r";
+                    String outMsg = "DATA " + sendTo + ":" + login + ": " + body + "\n\r";
                     worker.send(outMsg);
                 }
             } else {
                 if (sendTo.equalsIgnoreCase(worker.getLogin())) {
-                    String outMsg = "msg " + login + " " + body + "\n\r";
+                    String outMsg = "DATA " + login + ": " + body + "\n\r";
                     worker.send(outMsg);
                 }
             }
@@ -110,7 +113,7 @@ public class ServerWorker extends Thread {
 
     private void handleLogoff() throws IOException {
         server.removeWorker(this);
-        List<ServerWorker> workerList = server.getWorkerList();
+        Vector<ServerWorker> workerList = server.getWorkerList();
 
         // send other online user current user's status
         String onlineMsg = login + " gik offline \n\r";
@@ -125,6 +128,13 @@ public class ServerWorker extends Thread {
     public String getLogin() {
         return login;
     }
+
+    /**
+     *
+     * @param outputStream
+     * @param tokens
+     * @throws IOException
+     */
 
     private void handleLogin(OutputStream outputStream, String[] tokens) throws IOException {
         if (tokens.length == 3) {
@@ -142,11 +152,11 @@ public class ServerWorker extends Thread {
                     this.login = login;
                 }
 
-                String msg = "Godkendt login!\n\r";
+                String msg = "J_OK!\n\r";
                 outputStream.write(msg.getBytes());
                 System.out.println("User logged in successfully " + login);
 
-                List<ServerWorker> workerList = server.getWorkerList();
+                Vector<ServerWorker> workerList = server.getWorkerList();
 
                 // send current user all other online logins
                 handleList(login);
@@ -159,24 +169,34 @@ public class ServerWorker extends Thread {
                     }
                 }
             } else {
-                String msg = "Fejl login\n\r";
+                String msg = "J_ER - Forkert login!\n\r";
                 outputStream.write((msg.getBytes()));
             }
         }
     }
 
+    /**
+     * Sørger for at alle gæster har et unikt login
+     * @param login
+     * @return
+     */
+
     private String handleGuests(String login) {
-        List<ServerWorker> workerList = server.getWorkerList();
+        Vector<ServerWorker> workerList = server.getWorkerList();
 
         System.out.println(workerList);
 
         int count = 0;
         boolean guestFound = false;
-        for (ServerWorker worker : workerList) {
-            if (worker.getLogin().equals("guest")) {
-                count++;
-                guestFound = true;
+        try {
+            for (ServerWorker worker : workerList) {
+                if (worker.getLogin().startsWith("guest")) {
+                    count++;
+                    guestFound = true;
+                }
             }
+        } catch (NullPointerException e) {
+            System.out.println(e);
         }
         if (guestFound) {
             String newLogin = login + count;
@@ -187,7 +207,7 @@ public class ServerWorker extends Thread {
     }
 
     private void handleList(String login) throws IOException {
-        List<ServerWorker> workerList = server.getWorkerList();
+        Vector<ServerWorker> workerList = server.getWorkerList();
         send("Brugere online: \n\r");
         for (ServerWorker worker : workerList) {
             if (worker.getLogin() != null) {
