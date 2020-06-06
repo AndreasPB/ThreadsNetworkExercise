@@ -87,8 +87,14 @@ public class ServerWorker extends Thread {
         }
     }
 
-    // format: "msg/data" "login" tekst...
-    // format: "msg/data" "#topic" tekst...
+    /**
+     * format: "msg/data" "login" tekst...
+     * format: "msg/data" "#topic" tekst...
+     *
+     * @param tokens
+     * @throws IOException
+     * @throws ArrayIndexOutOfBoundsException
+     */
     private void handleMessage(String[] tokens) throws IOException, ArrayIndexOutOfBoundsException {
         String sendTo = tokens[1];
         String body = tokens[2];
@@ -111,6 +117,10 @@ public class ServerWorker extends Thread {
         }
     }
 
+    /**
+     * Sender offline status til alle andre end brugeren selv
+     * @throws IOException
+     */
     private void handleLogoff() throws IOException {
         server.removeWorker(this);
         Vector<ServerWorker> workerList = server.getWorkerList();
@@ -130,12 +140,12 @@ public class ServerWorker extends Thread {
     }
 
     /**
-     *
+     * To brugere + en guest
+     * Login + Sender online status til de andre brugere
      * @param outputStream
      * @param tokens
      * @throws IOException
      */
-
     private void handleLogin(OutputStream outputStream, String[] tokens) throws IOException {
         if (tokens.length == 3) {
 
@@ -180,7 +190,6 @@ public class ServerWorker extends Thread {
      * @param login
      * @return
      */
-
     private String handleGuests(String login) {
         Vector<ServerWorker> workerList = server.getWorkerList();
 
@@ -206,6 +215,11 @@ public class ServerWorker extends Thread {
         }
     }
 
+    /**
+     * Henter online status af alle undtagen brugeren selv
+     * @param login
+     * @throws IOException
+     */
     private void handleList(String login) throws IOException {
         Vector<ServerWorker> workerList = server.getWorkerList();
         send("Brugere online: \n\r");
